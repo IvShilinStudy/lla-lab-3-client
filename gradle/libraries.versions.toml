@@ -4,6 +4,7 @@ kotlin = "2.0.0"
 koin = "3.5.6"
 coroutines = "1.8.1"
 coil = "2.5.0"
+ktor = "2.3.11"
 
 [libraries]
 
@@ -17,9 +18,9 @@ koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines", version
 
 # KotlinX
 kotlinx-coroutines-bom = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-bom", version.ref = "coroutines" }
-kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines"}
-kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines"}
-kotlinx-coroutines-debug = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-debug", version.ref = "coroutines"}
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+kotlinx-coroutines-debug = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-debug", version.ref = "coroutines" }
 kotlinx-serialization = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version = "1.6.2" }
 
 # Coil
@@ -29,14 +30,22 @@ coil-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil" }
 # Joda
 jodatime = { module = "joda-time:joda-time", version = "2.12.7" }
 
+# Ktor
+ktor-content-negotiation-jvm = { group = "io.ktor", name="ktor-server-content-negotiation-jvm", version.ref = "ktor" }
+ktor-server-core-jvm = { group = "io.ktor", name="ktor-server-core", version.ref = "ktor" }
+ktor-serialization-jvm = { group = "io.ktor", name="ktor-serialization-kotlinx-json-jvm", version.ref = "ktor" }
+ktor-netty-jvm = { group = "io.ktor", name="ktor-server-netty-jvm", version.ref = "ktor" }
+
 [plugins]
-kotlin-jvm = {id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
 
 [bundles]
 coroutines = ["kotlinx-coroutines-core", "kotlinx-coroutines-debug"]
 coroutines-test = ["kotlinx-coroutines-core", "kotlinx-coroutines-debug", "kotlinx-coroutines-test"]
 koin = ["koin-core", "koin-core-coroutines"]
 coil = ["coil-core", "coil-svg"]
+ktor-server-base-jvm = ["ktor-content-negotiation-jvm", "ktor-server-core-jvm", "ktor-serialization-jvm", "ktor-netty-jvm"]
